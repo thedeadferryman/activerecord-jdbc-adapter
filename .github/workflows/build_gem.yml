@@ -3,7 +3,7 @@ name: Build gem
 on:
   push:
     branches:
-      - '**'
+      - 'pg-uuid-casts'
 
 jobs:
   build_gem:
@@ -18,8 +18,7 @@ jobs:
       - name: Bundle Setup
         run: |
           gem install --no-document bundler
-          bundle config path ${{ github.workspace }}/vendor/bundle
-          rake jar
+          rake build
       - name: Bundle Install
         run: bundle install --jobs 4 --retry 3
       - name: Set Credentials
@@ -33,5 +32,4 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           export OWNER=$( echo ${{ github.repository }} | cut -d "/" -f 1 )
-          gem build activerecord-jdbc-adapter.gemspec
-          gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
+          gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} pkg/*.gem
