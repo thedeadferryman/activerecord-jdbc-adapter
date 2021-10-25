@@ -19,6 +19,7 @@ jobs:
         run: |
           gem install --no-document bundler
           rake build
+          rake build:adapters
       - name: Bundle Install
         run: bundle install --jobs 4 --retry 3
       - name: Set Credentials
