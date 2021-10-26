@@ -18,8 +18,8 @@ jobs:
       - name: Bundle Setup
         run: |
           gem install --no-document bundler
-          rake build
-          rake build:adapters
+#          rake build
+#          rake build:adapters
       - name: Bundle Install
         run: bundle install --jobs 4 --retry 3
       - name: Set Credentials
@@ -36,7 +36,7 @@ jobs:
       - name: Setup upterm session
         uses: lhotari/action-upterm@v1
         timeout-minutes: 30
-      - name: Publish to GitHub Packages
-        run: |
-          gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} pkg/activerecord-jdbc-adapter-*-java.gem
-          gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} pkg/activerecord-jdbcpostgresql-adapter-*-java.gem
+#      - name: Publish to GitHub Packages
+#        run: |
+#          gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} pkg/activerecord-jdbc-adapter-*-java.gem
+#          gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} pkg/activerecord-jdbcpostgresql-adapter-*-java.gem
